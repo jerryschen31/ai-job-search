@@ -12,40 +12,67 @@ Structure answers as: **Situation** (context), **Task** (your responsibility), *
 
 Keep answers to 1-2 minutes. Be specific. End with what you learned or would do differently.
 
-## Ready-Made STAR Examples
+## STAR Candidates (Complete Manually)
 
-<!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
+<!-- Extracted from CV/LinkedIn by /setup. Situation/Task/Action/Result details need to be filled in with real specifics before using these in an interview. -->
 
-### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT - what was happening, what was the problem]
-**T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
-**A:** [WHAT YOU DID - specific actions, tools, methods]
-**R:** [OUTCOME - measurable results, adoption, impact]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### GxP-Qualified Bioinformatics Cloud (Project Leadership)
+**Source:** CV/LinkedIn - Genentech/Roche, Senior Software Engineer - Project Lead
+**What happened:** Led development, GxP validation, and production release of a cloud application for clinical manufacturing computational workflows in Cell & Gene Therapy, completed in 2025.
+**Why it matters:** Strong for "tell me about a complex project you led" or "how do you handle regulatory/compliance constraints" questions.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### Founding HubSeq and Pitching Y Combinator
+**Source:** CV/LinkedIn - HubSeq, Founder
+**What happened:** Founded a bioinformatics workflow-management startup, led a team of 4, and pitched Y Combinator twice (S22, F22) and Pear Ventures.
+**Why it matters:** Strong for "tell me about a time you took initiative," "describe a setback," or "why do you want to work somewhere entrepreneurial" questions.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
 
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### Building Encoded Therapeutics' Infrastructure from Scratch (Employee #2)
+**Source:** CV/LinkedIn - Encoded Therapeutics, Senior Bioinformatics Scientist
+**What happened:** As the second hire, built the company's entire bioinformatics, data, and cloud computing infrastructure from the ground up; the work directly contributed to discovery of the company's lead drug candidate and to Seed-through-Series-D funding ($300M+).
+**Why it matters:** Strong for "describe building something 0-to-1," "how do you handle ambiguity," or "tell me about work with high business impact" questions.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
 
-<!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
+### Leading AI Adoption and Training at Genentech/Roche
+**Source:** CV/LinkedIn - Genentech/Roche, Department Lead AI Champion and AI Engineer
+**What happened:** Leading ongoing AI training for ~100 employees and building scientific AI agents for manufacturing/assay workflows using Claude Code and other approved AI tooling.
+**Why it matters:** Strong for "how do you drive adoption of new technology," "influencing without authority," or "describe your experience with AI/agentic tooling" questions.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Migrating On-Premise Infrastructure to AWS Cloud
+**Source:** CV/LinkedIn - Encoded Therapeutics, Cloud Infrastructure
+**What happened:** Led the migration of all data storage and processing from on-premise servers to a containerized AWS architecture, managing compute environments, IAM, security groups, and storage/archival practices.
+**Why it matters:** Strong for "tell me about a technical migration you led" or "how do you approach cloud architecture decisions" questions.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
 
 ## Common Tough Questions
 
 ### "Why did you leave [previous company]?"
-> [PREPARE YOUR ANSWER - be honest, forward-looking, no negativity about former employer]
+> Be honest, forward-looking, no negativity about former employer. For the 2022 stretch specifically (HubSeq -> Huron -> Genentech): HubSeq was a founding venture that wound down after not securing further funding; Huron was a short-term consulting bridge; Genentech was the intentional landing spot for GxP/AI systems leadership. Fill in the specific narrative reasons before using this in an interview.
 
 ### "You don't have [specific skill/experience]."
-> [PREPARE YOUR ANSWER - acknowledge the gap, bridge to adjacent experience, show willingness to learn]
+> If the gap is algorithm/data-structure depth: acknowledge directly rather than deflect - "Algorithm development isn't where I add the most value; I focus on systems architecture, infrastructure, and cross-functional delivery, and partner closely with teammates who specialize in algorithmic work." For other gaps: acknowledge the gap, bridge to adjacent experience, show willingness to learn.
 
 ### "Where do you see yourself in 5 years?"
 > [PREPARE YOUR ANSWER - show ambition aligned with the role's growth path]

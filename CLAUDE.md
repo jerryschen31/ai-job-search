@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Jerry Chen
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Jerry Chen, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,70 +10,82 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
-
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
-- **Languages:** [YOUR_LANGUAGES]
-- **CV language:** [YOUR_CV_LANGUAGE] <!-- English unless your market expects otherwise; /setup asks -->
+- **Name:** Jerry S. Chen, Ph.D.
+- **Location:** San Jose, CA, USA (based in South Bay; prefers Cupertino/Sunnyvale/Mountain View/Redwood City/Santa Clara/San Jose/San Mateo; open to broader Bay Area, fully remote, or hybrid requiring only a few in-person visits/year)
+- **Languages:** English (native/bilingual), Chinese (limited working proficiency)
+- **CV language:** English
 
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Status:** Employed (Genentech/Roche), open to new opportunities
+- **LinkedIn headline:** "Software and Infrastructure for Biotech | Computer Engineering @ Caltech"
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **Postdoctoral Scholar, Bioinformatics** (2013-2015) - University of California, San Diego (Pasquinelli Lab)
+- **Ph.D. in Computational Science** (2007-2013) - San Diego State University, joint with Claremont Graduate University
+  - Topics: microRNAs, non-coding RNAs, embryonic development, computational biology
+- **M.S. in Bioengineering** (2003-2006) - University of California, San Diego
+- **B.S. in Electrical and Computer Engineering, Magna Cum Laude** (1999-2003) - California Institute of Technology
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Senior Software Engineer - Project Lead** (2023 - current) - **Genentech/Roche** (South San Francisco, CA)
+  - Project Lead for GxP-qualified Bioinformatics Cloud (completed 2025)
+  - Global Implementation Lead for FCS Express validation and deployment; Business Process Manager for Basecamp 2.0
+  - Department Lead AI Champion and AI Engineer: training ~100 employees, building agentic AI tools with Claude Code
+- **Software Developer** (Nov 2022 - Feb 2023) - **Huron Consulting Group** (Remote)
+  - Python modules for healthcare data visualization dashboards, AWS S3/Athena integration
+- **Founder (Full-Time)** (Jun 2022 - Feb 2023) - **HubSeq** (San Jose, CA)
+  - Founded bioinformatics workflow management startup; led team of 4; pitched Y Combinator (S22, F22) and Pear Ventures
+- **Head of Bioinformatics and Software** (2020 - 2022) - **Factorial Biotechnologies** (San Carlos, CA)
+  - Led bioinformatics, software, database, and cloud infrastructure for single-cell genomics platform
+- **Senior Bioinformatics Scientist** (2015 - 2020) - **Encoded Therapeutics** (South San Francisco, CA)
+  - Early Employee (2nd hire); built end-to-end cloud genomics data solution processing 7,000+ samples
+  - Data efforts directly supported Seed-Series C funding; company raised $300M+ through Series D
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** Python, AWS cloud architecture (Batch, RDS, ECR, Redshift, S3, IAM), Terraform, Docker, agentic AI engineering (Claude Code)
+- **Secondary:** R, SQL, Java, MySQL, MongoDB
+- **Domain:** Bioinformatics & genomics (NGS, single-cell sequencing), GxP-regulated software validation, clinical manufacturing systems, drug development lifecycle
+- **Software:** FastQC, BWA, BEDtools, Picard, SAMtools, BCFtools, Varscan2, EBCall, Mutect2, GATK, JIRA, Git
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **Building AI Systems with RAG and Agentic AI** - Coursera Professional Certificate - completed Nov 2025
+- **AI Agent Developer** - Coursera Professional Course - completed Oct 2025
+- **Generative AI for Project Managers** - Coursera Professional Course - completed Sep 2025
+- **Generative AI for Software Development** - Coursera Professional Course - completed Sep 2025
+- **SEI Software Architecture Professional** - Carnegie Mellon University, Software Engineering Institute - completed Jun 2023
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- Schreiner WP, Pagliuso DC, Garrigues JM, Chen JS, Aalto AP and AE Pasquinelli (2019). Remodeling of the Caenorhabditis elegans non-coding RNA transcriptome by heat shock. Nucleic Acids Research.
+- Aalto AP, Nicastro IA, Broughton JP, Chen JS and AE Pasquinelli (2018). Opposing roles of microRNA Argonautes during Caenorhabditis elegans aging. PLoS Genetics.
+- Chen JS, A Gumbayan, RW Zeller, JM Mahaffy (2014). An extended Notch-Delta model exhibiting long-range patterning and incorporating microRNA regulation. PLoS Computational Biology. (Cover Article)
+- Chen JS, San Pedro M and RW Zeller (2011). miR-124 function during Ciona intestinalis neuronal development includes extensive interaction with the Notch signaling pathway. Development. (Featured Article)
+- (Full list of 9 publications in `.claude/skills/job-application-assistant/01-candidate-profile.md`)
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+- NIH Postdoctoral Fellowship (F32) - UC San Diego (2013)
+- Cover Article - PLoS Computational Biology (2014)
+- Featured Article - Development (2011)
+- Magna Cum Laude - Caltech (2003)
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+- **Reasoning-led with intuition** - decisions blend ~60% analytical reasoning with ~40% gut/intuition
+- **Collaborative, direct communicator** - polite but clear and straightforward
+- **Strengths:** Cross-functional technical leadership, 0-to-1 systems/infrastructure builds, AI adoption and training
+- **Growth areas:** Algorithm/data-structure-heavy work (self-identified weak spot - hard no on algorithm-development roles)
+- **Thrives in:** Lively, supportive team environments; drained by cut-throat, overly fast-paced cultures
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- Building and deploying complex data/digital/agentic AI systems end-to-end
+- Cross-functional leadership bridging engineering, science, and business stakeholders
+- AI adoption and training in regulated enterprise environments
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- Biotech/Pharma (regulated systems, GxP validation): Genentech/Roche-style organizations
+- Big Tech / AI Engineering, ideally close to home: Apple, or companies in Sunnyvale/Santa Clara/Cupertino
 
 ### Deal-breakers
-<!-- Hard constraints on job search -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Algorithm-development-heavy roles (hard no)
+- Relocation outside the Bay Area (remote/hybrid with minimal travel is fine)
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)

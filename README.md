@@ -39,7 +39,7 @@ Sixty-nine tailored applications, twenty first interviews, and one signed contra
 
 ## What this is
 
-A structured workflow that turns Claude Code into a full-stack job application assistant. The core workflow (self-profiling, fit evaluation, and the drafter-reviewer application pipeline) is **language- and country-agnostic**. The job portal search skills are built for the Danish market (Jobindex, Jobnet, Akademikernes Jobbank, etc.), but the pattern is designed to be swapped for your local job boards.
+A structured workflow that turns Claude Code into a full-stack job application assistant. The core workflow (self-profiling, fit evaluation, and the drafter-reviewer application pipeline) is **language- and country-agnostic**. It ships with portal search skills for LinkedIn, Built In, freehire, the four major ATS platforms (Greenhouse, Ashby, Lever, Workday), Levels.fyi, and two aggregators — and `/add-portal` generates more for your local job boards.
 
 ```
 /setup          /scrape              /apply <url>
@@ -81,7 +81,7 @@ cd ai-job-search
 PowerShell:
 
 ```powershell
-$tools = @("jobbank-search", "jobdanmark-search", "jobindex-search", "jobnet-search", "linkedin-search", "freehire-search")
+$tools = @("linkedin-search", "freehire-search", "builtin-search", "greenhouse-search", "ashby-search", "lever-search", "workday-search", "remotive-search", "muse-search", "levels-fyi-search", "levels-fyi-compensation")
 foreach ($tool in $tools) {
   Push-Location ".agents/skills/$tool/cli"
   bun install
@@ -92,12 +92,12 @@ foreach ($tool in $tools) {
 Bash / zsh / Git Bash:
 
 ```bash
-for tool in jobbank-search jobdanmark-search jobindex-search jobnet-search linkedin-search freehire-search; do
+for tool in linkedin-search freehire-search builtin-search greenhouse-search ashby-search lever-search workday-search remotive-search muse-search levels-fyi-search levels-fyi-compensation; do
   (cd .agents/skills/$tool/cli && bun install)
 done
 ```
 
-For `linkedin-search` and `freehire-search` the install is optional: both have zero runtime dependencies and run with plain `bun`; `bun install` only pulls TypeScript dev types.
+All portal CLIs have **zero runtime dependencies** and run with plain `bun`, so `bun install` is optional — it only pulls TypeScript dev types.
 
 ### 3. Set up your profile
 
@@ -120,7 +120,7 @@ This searches multiple job portals for positions matching your profile, deduplic
 ### 5. Apply to a job
 
 ```bash
-/apply https://jobindex.dk/job/1234567
+/apply https://www.linkedin.com/jobs/view/1234567
 ```
 
 If the URL can't be fetched (some job portals block automated access), you can paste the job description directly instead:
@@ -183,12 +183,17 @@ ai-job-search/
 │   │   └── upskill/                   # /upskill skill gap analysis and learning plan
 │   └── settings.json                  # Claude Code permissions (shared, scoped)
 ├── .agents/skills/                    # Job portal CLI tools
-│   ├── jobbank-search/                # Akademikernes Jobbank (Denmark)
-│   ├── jobdanmark-search/             # Jobdanmark.dk (Denmark)
-│   ├── jobindex-search/               # Jobindex.dk (Denmark)
-│   ├── jobnet-search/                 # Jobnet.dk (Denmark, government portal)
 │   ├── linkedin-search/               # LinkedIn public job listings (country-agnostic)
-│   └── freehire-search/               # freehire.me tech job aggregator (multi-market, REST API)
+│   ├── freehire-search/               # freehire.me tech job aggregator (multi-market, REST API)
+│   ├── builtin-search/                # Built In (builtin.com) US/Canada tech-job board
+│   ├── greenhouse-search/             # Greenhouse ATS - biotech, genomics, AI labs (many companies)
+│   ├── ashby-search/                  # Ashby ATS - techbio + AI startups (insitro, Benchling, OpenAI)
+│   ├── lever-search/                  # Lever ATS (Zoox, Palantir, Spotify, Synthego)
+│   ├── workday-search/                # Workday - big pharma (Roche/Genentech, Pfizer, GSK, ...)
+│   ├── levels-fyi-search/             # Levels.fyi jobs, with salary ranges attached
+│   ├── levels-fyi-compensation/       # Levels.fyi salary benchmarking + salary_data.json export
+│   ├── remotive-search/               # Remotive remote-jobs feed (small, attribution required)
+│   └── muse-search/                   # The Muse (~400k jobs, taxonomy filters)
 ├── cv/
 │   └── main_example.tex               # moderncv LaTeX template
 ├── cover_letters/
@@ -287,7 +292,7 @@ If you prefer doing it by hand, the manual route still works: update the guidanc
 
 ### Job search tools
 
-The four Danish CLI tools in `.agents/skills/` (Jobbank, Jobdanmark, Jobindex, Jobnet) demonstrate the pattern for building a job-portal integration for a specific market. If you're in a different country, run:
+To add a portal for your local job board, run:
 
 ```
 /add-portal
@@ -297,10 +302,19 @@ Give it your local job board's URL. The command investigates the portal (search-
 
 Maintaining a fork adapted to your market or language? Add it to the [Community forks & adaptations](https://github.com/MadsLorentzen/ai-job-search/discussions/78) thread so others can find it.
 
-For **country-agnostic** starting points outside Denmark, the repo ships two portal skills alongside the Danish demos:
+The repo ships eleven portal skills out of the box. The highest-leverage ones are the **ATS skills** — most employers run their careers page on one of four platforms, so a single skill covers hundreds of companies:
 
 - **`linkedin-search`** — built on LinkedIn's public, unauthenticated `jobs-guest` endpoints. Field-agnostic, **zero runtime dependencies** (runs with just `bun`), and takes the search location as an explicit flag, so it works for any market out of the box (`-l "Berlin, Germany"`, `-l "Mumbai, Maharashtra, India"`, `-l "Remote"`, …). Intended for **personal use only** — automated access is against LinkedIn's Terms of Service, so keep volume low. See `.agents/skills/linkedin-search/SKILL.md`.
-- **`freehire-search`** — queries the [freehire.me](https://freehire.me) aggregator's public REST API (JSON, no API key). Tech-focused (software, data, engineering, DevOps, remote), multi-market via facet flags (`--region`, `--country`, `--remote`), and **zero runtime dependencies**. Unlike the HTML-scraping Danish portals, results come back structured (skills, seniority, category). The backend is MIT-licensed and [self-hostable](https://github.com/strelov1/freehire) — point `FREEHIRE_API_URL` at your own instance if you prefer. See `.agents/skills/freehire-search/SKILL.md`.
+- **`freehire-search`** — queries the [freehire.me](https://freehire.me) aggregator's public REST API (JSON, no API key). Tech-focused (software, data, engineering, DevOps, remote), multi-market via facet flags (`--region`, `--country`, `--remote`), and **zero runtime dependencies**. Results come back structured (skills, seniority, category). The backend is MIT-licensed and [self-hostable](https://github.com/strelov1/freehire) — point `FREEHIRE_API_URL` at your own instance if you prefer. See `.agents/skills/freehire-search/SKILL.md`.
+- **`builtin-search`** — searches Built In (builtin.com), a US/Canada tech- and startup-focused job board with national and metro editions. Keyword + city/state or remote-only search, **zero runtime dependencies**, detail pulled from the site's structured `JobPosting` data (salary, employment type, industries). Intended for **personal use only** — its `robots.txt` disallows the search parameter for unrecognized crawlers, so keep volume low. See `.agents/skills/builtin-search/SKILL.md`.
+- **`greenhouse-search`** — Greenhouse's public job-board API. The broadest source for **biotech, genomics, and AI-lab** roles: 10x Genomics, Natera, Altos Labs, Recursion, Freenome, Twist Bioscience, Arc Institute, Isomorphic Labs, CZI, Ginkgo, GeneDx, Ultima Genomics, plus Anthropic, Databricks, Scale AI, Waymo. Fans out across a curated company list and filters by keyword/location/sector/age. See `.agents/skills/greenhouse-search/SKILL.md`.
+- **`ashby-search`** — Ashby's public posting API. Where the **techbio and AI-lab startup** market lives: insitro, Benchling, Chai Discovery, Latent Labs, OpenAI, Cursor, ElevenLabs, Fireworks AI, Modal, Replit. Returns compensation tiers where published. See `.agents/skills/ashby-search/SKILL.md`.
+- **`workday-search`** — the public Workday endpoint behind big-pharma career sites: **Roche/Genentech**, AstraZeneca, Sanofi, Merck, GSK, Bristol Myers Squibb, Pfizer, Gilead, Illumina. The only source here with genuine **server-side keyword search**, and the primary route to regulated/GxP pharma roles. Any other Workday site works via `--tenant/--wd/--site`. See `.agents/skills/workday-search/SKILL.md`.
+- **`lever-search`** — Lever's public postings API (Zoox, Palantir, Spotify, Synthego). `api.lever.co/robots.txt` is `Allow: /`. See `.agents/skills/lever-search/SKILL.md`.
+- **`levels-fyi-search`** — Levels.fyi job listings **with salary ranges attached**. Filters by a fixed job-family taxonomy rather than free text. See `.agents/skills/levels-fyi-search/SKILL.md`.
+- **`levels-fyi-compensation`** — salary benchmarking via Levels.fyi's LLM-readable `.md` routes (explicitly sanctioned in their `robots.txt`/`llms.txt`). Per-level pay at a company, market rates by metro, and an `export` command that generates `salary_data.json` so `/apply`'s salary step has real data. **Attribution required.** See `.agents/skills/levels-fyi-compensation/SKILL.md`.
+- **`muse-search`** — The Muse's public API (~400k jobs), filtered server-side by location/category/level/company. See `.agents/skills/muse-search/SKILL.md`.
+- **`remotive-search`** — Remotive's public remote-jobs feed. Small (~34 jobs, unfiltered upstream) and **attribution-required**; a supplementary source, not a search engine. See `.agents/skills/remotive-search/SKILL.md`.
 
 ### Salary benchmarking
 

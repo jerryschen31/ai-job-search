@@ -44,9 +44,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Bioinformatics/genomics software engineering; GxP-validated software systems and clinical manufacturing infrastructure (regulated biotech/pharma); AWS cloud architecture and infrastructure-as-code (Terraform); agentic AI / AI adoption engineering (Claude Code and other LLM tooling); technical project/program leadership; 0-to-1 startup infrastructure builds
+**Moderate match areas:** General enterprise DevOps/MLOps outside biotech; data engineering/ETL; people management (direct-report scope so far limited to 2 employees); general software engineering outside the bioinformatics stack
+**Weak match areas:** Algorithm-development-heavy roles (self-identified hard no); pure ML research/modeling roles requiring deep algorithms or data-structures depth; roles with LeetCode-style competitive-coding interview bars
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for?
@@ -58,9 +58,9 @@ Does work history align with what they're looking for?
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** Bioinformatics/genomics infrastructure leadership, GxP-validated software systems in pharma/biotech, cloud architecture (AWS) for regulated environments, agentic AI adoption and engineering
+**Moderate:** General enterprise software engineering, DevOps/platform engineering outside biotech, data engineering
+**Entry-level:** Pure algorithm/ML-research roles, roles in industries with no data/biotech/regulated-systems overlap
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -75,8 +75,11 @@ Does the role and company culture match the behavioral profile?
 **Red flags to research:** Department disorganization, work dominated by maintenance over development, poor chemistry with leadership, culture mismatches. Check reviews, media coverage, LinkedIn connections, and network contacts for insider perspective.
 
 ### 4. Location & Logistics (Pass/Fail + Notes)
-- Within commute range: PASS
-- Remote with occasional office: PASS
+- Based in San Jose, CA. Preferred areas: Cupertino, Sunnyvale, Mountain View, Redwood City, Santa Clara, San Jose, San Mateo (South Bay)
+- Broader Bay Area: PASS
+- Fully remote: PASS
+- Hybrid requiring only a few in-person visits per year (including out-of-area hybrid): PASS
+- Hybrid requiring regular in-office days outside the Bay Area: FLAG (discuss with user)
 - Requires relocation: FAIL (deal-breaker)
 - Frequent international travel: FLAG (discuss with user)
 
@@ -91,19 +94,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Principal Engineer / Systems Lead role driving development, rollout, integration, automation, and governance of complex data, digital, and agentic AI solutions
+- Ideally based at Apple or a company in Sunnyvale/Santa Clara/Cupertino (close to home); open to remote or Bay Area hybrid otherwise
+- Hard no: algorithm-development-heavy roles
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
-- Non-task factors: leadership style, department culture, company values, degree of autonomy
+- Tasks that energize: cross-functional technical leadership, building/deploying complex systems from scratch, AI/agentic tooling adoption, regulated-system validation and rollout, mentoring/training
+- Tasks that drain: deep algorithm/data-structure development, cut-throat or high-pressure competitive cultures
+- Non-task factors: supportive/collegial team culture, steady pace, direct and clear communication norms
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: Currently employed at Genentech/Roche; searching from a position of stability, not urgency
+- **Flexibility**: Open to fully remote or hybrid with minimal required travel; prefers South Bay if on-site
+- **Professional development**: Actively growing AI/agentic-engineering skills (5 Coursera certifications completed in 2025)
 
 ### 6. Salary Benchmark (Optional)
 
@@ -157,7 +160,7 @@ Present the evaluation as:
 
 ### Company Research Checklist
 - [ ] Checked company website (mission, values, recent news)
-- [ ] Checked review sites (Glassdoor, Jobindex, etc.)
+- [ ] Checked review sites (Glassdoor, Levels.fyi, Blind, etc.)
 - [ ] Checked LinkedIn for team size, recent hires, connections
 - [ ] Checked media for restructuring, growth, or workplace issues
 - [ ] Identified network contacts who may know the team/manager

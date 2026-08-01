@@ -1,8 +1,7 @@
-%% Example CV - [YOUR_NAME]
+%% Example CV - Jerry S. Chen, Ph.D.
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -24,18 +23,18 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Jerry S. Chen, Ph.D. - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Jerry}{Chen, Ph.D.}
+\address{San Jose, CA, USA}{}{}
+\phone[mobile]{858-342-5584}
+\email{jerryschen@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/jerry-chenphd}{LinkedIn}, \href{https://github.com/jerryschen31}{GitHub}}
 
 \begin{document}
 
@@ -46,7 +45,7 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{Ph.D. engineering leader with 20 years building and deploying enterprise digital infrastructure across the drug development lifecycle, from high-throughput R\&D data platforms to GxP-qualified clinical manufacturing systems. Currently leading AI Engineering and AI Adoption at Genentech/Roche, including GxP-qualified cloud application delivery and agentic AI tooling built with Claude Code. Combines deep bioinformatics and cloud architecture expertise (AWS, Terraform) with a track record of building technical infrastructure from zero, including as founder of a Y Combinator-interviewed bioinformatics startup.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -56,15 +55,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{Agentic AI \& AI Adoption}: Building agentic AI tools with Claude Code; AI training and change management for regulated enterprise teams; Coursera-certified in RAG, agentic AI, and generative AI for software development
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Cloud Architecture}: AWS (Batch, RDS, DocumentDB, ECR, Redshift, S3, IAM), Docker, Terraform infrastructure-as-code
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Software \& Data Engineering}: Python, R, SQL, containerized bioinformatics pipelines, database architecture (MySQL, MongoDB)
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{GxP Systems \& Validation}: GxP-qualified software validation, deployment, and global rollout for clinical manufacturing systems
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Bioinformatics \& Genomics}: NGS and single-cell sequencing pipelines, structural variant calling, sequence library design
 
 \end{itemize}
 
@@ -77,31 +76,29 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2023--Present}{Senior Software Engineer - Project Lead}{Genentech / Roche}{South San Francisco, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Project Lead for GxP-qualified Bioinformatics Cloud (completed 2025): led development, validation, and production release of a cloud application for clinical manufacturing workflows in Cell \& Gene Therapy
+    \item Global Implementation Lead for FCS Express validation and deployment; Business Process Manager for Basecamp 2.0 manufacturing recipe software
+    \item Department Lead AI Champion and AI Engineer: leading AI training for ~100 employees and building scientific AI agents using Claude Code
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2020--2022}{Head of Bioinformatics and Software}{Factorial Biotechnologies}{San Carlos, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Led bioinformatics, software, database, and cloud infrastructure (AWS Batch, RDS, DocumentDB, Terraform) for a single-cell genomics platform
+    \item Built containerized bioinformatics pipelines and a LIMS database for experiment and inventory management
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\item{\cventry{2015--2020}{Senior Bioinformatics Scientist (Early Employee)}{Encoded Therapeutics}{South San Francisco, CA}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Built end-to-end cloud genomics data solution processing 7,000+ biological samples; work directly supported Seed through Series C funding
+    \item Led migration of all data infrastructure from on-premise to a containerized AWS architecture
 \end{itemize}}}
 
 \end{itemize}
@@ -114,14 +111,13 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
+\item{\cventry{2007--2013}{Ph.D. in Computational Science}{San Diego State University (joint with Claremont Graduate University)}{San Diego, CA}{}{\vspace{1pt}
+Emphasis in molecular biology and bioinformatics: microRNAs and non-coding RNAs in embryonic development.
 }}
 
 \vspace{3pt}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
+\item{\cventry{1999--2003}{B.S. in Electrical and Computer Engineering, Magna Cum Laude}{California Institute of Technology}{Pasadena, CA}{}{\vspace{1pt}
 }}
 
 \end{itemize}
@@ -133,7 +129,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
+\item English (native/bilingual), Chinese (limited working proficiency).
 \end{itemize}
 
 % ============================================================
@@ -143,7 +139,9 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Publications}
 \vspace{1pt}
 \begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
+\item Chen JS, A Gumbayan, RW Zeller, JM Mahaffy (2014). An extended Notch-Delta model exhibiting long-range patterning and incorporating microRNA regulation. \textbf{PLoS Computational Biology} 10:1-21. (Cover Article) \href{http://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.1003655}{DOI link}
+\item Chen JS, San Pedro M and RW Zeller (2011). miR-124 function during Ciona intestinalis neuronal development includes extensive interaction with the Notch signaling pathway. \textbf{Development} 138:4943-4953. (Featured Article) \href{http://dev.biologists.org/content/138/22/4943.full}{DOI link}
+\item Schreiner WP, Pagliuso DC, Garrigues JM, Chen JS, Aalto AP and AE Pasquinelli (2019). Remodeling of the Caenorhabditis elegans non-coding RNA transcriptome by heat shock. \textbf{Nucleic Acids Research} 47(18):9829-9841.
 \end{itemize}
 
 % ============================================================
@@ -153,7 +151,8 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Honors and Awards}
 \vspace{1pt}
 \begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item{\textbf{NIH Postdoctoral Fellowship (F32)} -- UC San Diego (2013).}
+\item{\textbf{Magna Cum Laude} -- California Institute of Technology (2003).}
 \end{itemize}
 
 % ============================================================

@@ -4,51 +4,50 @@ framework_version: 1.0.0
 
 # Behavioral Profile
 
-<!-- SETUP: This file is populated by running /setup -->
-<!-- You can use results from PI, DISC, Myers-Briggs, StrengthsFinder, or a self-assessment -->
+<!-- No formal PI/DISC/Myers-Briggs assessment on file. Synthesized from self-assessment answers gathered during /setup. -->
 
 ## Overview
-[YOUR_NAME]'s behavioral assessment identifies them as a **[PROFILE_TYPE]** pattern. [1-2 SENTENCE_SUMMARY].
+Jerry is a collaborative, team-oriented technical leader who blends analytical reasoning with intuition (roughly 60% reasoning, 40% gut/intuition) when making decisions. He thrives in lively, supportive team environments and is drained by cut-throat, overly fast-paced cultures.
 
 ## Core Behavioral Drives
 
 | Drive | Level | Meaning |
 |-------|-------|---------|
-| [DRIVE_1] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_2] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_3] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_4] | [LEVEL] | [DESCRIPTION] |
+| Decision-making style | Reasoning-led, intuition-informed (~60/40) | Uses structured analysis as the primary driver but weighs gut instinct meaningfully rather than purely relying on data |
+| Team orientation | High | Works well independently, but is energized and performs best in supportive, collegial team settings |
+| Pace preference | Steady / sustainable | Prefers a lively but supportive pace over cut-throat, high-pressure environments |
+| Communication style | Direct and clear, delivered politely | Says what needs to be said without ambiguity, but frames it respectfully |
 
 ## Strongest Behaviors
-- **[BEHAVIOR_1]:** [DESCRIPTION]
-- **[BEHAVIOR_2]:** [DESCRIPTION]
-- **[BEHAVIOR_3]:** [DESCRIPTION]
+- **Collaborative cross-functional leadership:** Works fluidly across engineers, scientists, business development, and IT stakeholders (demonstrated across every role from Encoded Therapeutics to Genentech/Roche)
+- **Balanced decision-making:** Combines analytical reasoning with intuition rather than over-indexing on either
+- **Direct, clear communicator:** Polite but straightforward; avoids ambiguity
 
 ## How You Work Best
-- [ENVIRONMENT_PREFERENCE_1]
-- [ENVIRONMENT_PREFERENCE_2]
-- [ENVIRONMENT_PREFERENCE_3]
+- Supportive, collegial team environments with mutual respect
+- Steady-paced environments that allow for thoughtful reasoning rather than "cut-throat"/high-pressure cultures
+- Comfortable working independently, but thrives most in supportive teams
 
 ## Growth Areas (frame positively in applications)
-- **[AREA_1]:** [HOW_TO_FRAME_IT_POSITIVELY]
-- **[AREA_2]:** [HOW_TO_FRAME_IT_POSITIVELY]
+- **Algorithm-heavy technical work:** Self-identified as a weak spot and a hard no for role fit. Frame positively as: "Focuses technical strength on systems architecture, infrastructure, and cross-functional delivery, and partners closely with teammates who specialize in algorithmic/data-structure-heavy work" rather than claiming algorithm depth.
 
 ## Mapping to Job Posting Language
 
 When a job posting mentions these keywords, it's a **strong behavioral fit**:
-- [KEYWORD_OR_PHRASE_THAT_MATCHES_YOUR_STYLE]
-- [ANOTHER_KEYWORD]
+- "collaborative", "supportive team culture", "cross-functional"
+- "mentorship", "servant leadership"
+- "flexible", "remote-friendly", "hybrid"
 
 When a job posting mentions these, flag as **potential friction** (not deal-breaker):
-- [KEYWORD_OR_PHRASE_THAT_MIGHT_CLASH]
-- [ANOTHER_KEYWORD]
+- "fast-paced", "high-pressure", "cut-throat", "competitive stack ranking"
+- "algorithm-heavy", "competitive programming", "LeetCode-style" technical bar - **this is closer to a hard no given the self-identified weakness in algorithm development**
 
 ## Management Style Preferences
-- [WHAT_MANAGEMENT_STYLE_WORKS_FOR_YOU]
-- [WHAT_DOESN'T_WORK]
+- Works well under supportive, low-drama management with clear, direct communication
+- Does not work well under highly political, cut-throat, or hyper-competitive management styles
 
 ## Using This in Applications
-- **Cover letters:** [HOW_TO_WEAVE_IN_BEHAVIORAL_STRENGTHS]
-- **CV:** [WHAT_TO_EMPHASIZE]
-- **Interviews:** [WHAT_STAR_EXAMPLES_TO_USE]
-- **Don't overstate:** [WHAT_NOT_TO_CLAIM]
+- **Cover letters:** Emphasize cross-functional collaboration, steady/reliable delivery, and systems-level ownership rather than pure algorithmic depth
+- **CV:** Emphasize leadership, project delivery, and infrastructure/systems ownership over algorithm-heavy technical claims
+- **Interviews:** Lean on STAR examples that show cross-team leadership (AI adoption/training at Genentech, GxP stakeholder coordination, founding HubSeq)
+- **Don't overstate:** Avoid claiming deep algorithm or data-structure expertise; steer away from roles or interview loops that emphasize competitive coding

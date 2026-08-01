@@ -1,0 +1,11 @@
+{
+  "name": "levels-fyi-compensation-cli",
+  "version": "1.0.0",
+  "description": "CLI for compensation benchmarking via Levels.fyi's LLM-readable markdown routes — no authentication, zero runtime dependencies. Attribution required.",
+  "type": "module",
+  "main": "src/cli.ts",
+  "bin": { "levels-fyi-compensation": "src/cli.ts" },
+  "scripts": { "start": "bun run src/cli.ts", "test": "bun test --timeout 30000", "typecheck": "tsc --noEmit" },
+  "dependencies": {},
+  "devDependencies": { "typescript": "^5.4.0", "@types/bun": "1.3.14" }
+}
