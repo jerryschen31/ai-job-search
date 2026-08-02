@@ -159,6 +159,60 @@ export function ageInDays(iso: string | null): number | null {
   return (Date.now() - t) / 86400000
 }
 
+/**
+ * Whole-token containment: `needle` must sit on letter/number boundaries inside
+ * `text`. Boundaries are `\p{L}\p{N}`-aware rather than `\b` so accented place
+ * names ("Ümraniye", "São Paulo") behave.
+ */
+function matchesWholeToken(text: string, needle: string): boolean {
+  const n = needle.toLowerCase().replace(/\s+/g, " ").trim()
+  if (!n) return true
+  const haystack = text.toLowerCase().replace(/\s+/g, " ").trim()
+  if (!haystack) return false
+  const escaped = n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "u").test(haystack)
+}
+
+/**
+ * Match `--location` against Workday's location text on token boundaries.
+ *
+ * A raw substring test made short filters useless: `-l "CA"` matched "2 Locations"
+ * (the "ca" inside "Locations") and "Ocoyoacac", so the filter passed through
+ * postings from Budapest and Hyderabad.
+ *
+ * Note this also excludes postings whose location Workday collapses to "2 Locations"
+ * / "4 Locations" — those genuinely carry no city text to match, and only a `detail`
+ * fetch can say whether they include the place you asked for.
+ */
+export function locationMatches(locationText: string | null, filter: string): boolean {
+  if (!filter.trim()) return true
+  return matchesWholeToken(locationText ?? "", filter)
+}
+
+/**
+ * Narrow Workday's server-side hits to titles containing every query term.
+ *
+ * Workday OR-matches `searchText` across the whole posting, so a multi-word query
+ * returns anything sharing one common word — `-q "technical program manager"` came
+ * back with "Key Account Manager" and "Field Medical Director". The server call still
+ * supplies recall; this supplies precision, matching the "all terms must match"
+ * semantics the Greenhouse/Ashby/Lever skills already document. `--loose` skips it and
+ * returns Workday's own ranking untouched, which is what you want when the term you
+ * care about lives in the description rather than the title.
+ */
+export function titleMatchesAllTerms(title: string, query: string): boolean {
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean)
+  if (terms.length === 0) return true
+  const haystack = title.toLowerCase()
+  return terms.every((t) =>
+    // Longer terms match as substrings so "bioinformatics" still finds
+    // "Bioinformatician". Two-letter terms ("ai", "ml", "qa") can't: as substrings
+    // they hit the middle of ordinary words, which pulled a German cleanroom
+    // internship into an "AI engineer" search.
+    t.length <= 2 ? matchesWholeToken(haystack, t) : haystack.includes(t),
+  )
+}
+
 export function normalizePosting(
   p: WorkdayPosting,
   employerKey: string,

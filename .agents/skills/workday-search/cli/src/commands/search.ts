@@ -2,6 +2,8 @@ import {
   postJson,
   normalizePosting,
   ageInDays,
+  locationMatches,
+  titleMatchesAllTerms,
   writeError,
   MAX_PAGE_SIZE,
   type WorkdaySearchResponse,
@@ -17,6 +19,8 @@ export interface SearchOpts {
   jobage?: number
   page: number
   limit: number
+  /** Skip the local all-terms title filter and keep Workday's raw OR-matched ranking. */
+  loose?: boolean
   format: "json" | "table" | "plain"
   /** Ad-hoc employer not in the curated list. */
   custom?: { tenant: string; wd: string; site: string }
@@ -97,7 +101,17 @@ export async function runSearch(opts: SearchOpts): Promise<number> {
     }
 
     // Pull enough from each employer to fill the requested page after filtering.
-    const want = Math.max(opts.limit * opts.page, MAX_PAGE_SIZE)
+    // The strict title filter needs a deeper window than the page size to bite:
+    // Workday ranks its OR-matched hits by its own relevance, so the titles that
+    // contain every term routinely sit below the ones that share only one. Without
+    // the overfetch a default-sized page would filter down to nothing while real
+    // matches sat just past the horizon. Bounded so this stays a handful of extra
+    // 20-row requests per employer, and the fetch loop still stops early once an
+    // employer is exhausted.
+    const strictQuery = Boolean(opts.query) && !opts.loose
+    const pageWant = Math.max(opts.limit * opts.page, MAX_PAGE_SIZE)
+    // max() so a large --limit is never *shrunk* by the overfetch cap.
+    const want = strictQuery ? Math.max(pageWant, Math.min(pageWant * 5, 100)) : pageWant
     const settled = await Promise.all(employers.map((e) => fetchEmployer(e, opts.query, want)))
 
     const failures = employers
@@ -107,9 +121,11 @@ export async function runSearch(opts: SearchOpts): Promise<number> {
     let jobs = settled.flatMap((s) => s.jobs)
     const matchedTotal = settled.reduce((sum, s) => sum + s.total, 0)
 
+    if (opts.query && !opts.loose) {
+      jobs = jobs.filter((j) => titleMatchesAllTerms(j.title, opts.query!))
+    }
     if (opts.location) {
-      const needle = opts.location.toLowerCase()
-      jobs = jobs.filter((j) => (j.location ?? "").toLowerCase().includes(needle))
+      jobs = jobs.filter((j) => locationMatches(j.location, opts.location!))
     }
     if (opts.jobage !== undefined && opts.jobage > 0) {
       jobs = jobs.filter((j) => {
@@ -144,6 +160,9 @@ export async function runSearch(opts: SearchOpts): Promise<number> {
               matchedTotal,
               page: opts.page,
               employersSearched: employers.length,
+              // Surfaced so a low `fetched` against a high `matchedTotal` reads as
+              // local narrowing rather than a thin server response.
+              ...(opts.query ? { queryFilter: opts.loose ? "loose" : "all-terms-in-title" } : {}),
               ...(failures.length ? { failed: failures } : {}),
             },
             results: pageJobs,

@@ -50,8 +50,15 @@ USAGE
   bun run src/cli.ts employers [--format json|table]
 
 SEARCH FLAGS
-  --query, -q <text>      Keyword search. Sent SERVER-SIDE to each employer.
+  --query, -q <text>      Keyword search. Sent SERVER-SIDE to each employer, then
+                          narrowed locally to titles containing EVERY term (Workday
+                          OR-matches searchText, so multi-word queries otherwise
+                          return anything sharing one word).
+  --loose                 Skip that local narrowing and keep Workday's own ranking.
+                          Use when your term lives in the description, not the title.
   --location, -l <text>   Filter results on location text, e.g. "Santa Clara".
+                          Matched on token boundaries, so -l "CA" won't hit
+                          "2 Locations".
   --employer, -e <key>    Search a specific employer (see \`employers\`). Repeatable.
   --sector <name>         Restrict to pharma | biotech | tech.
   --jobage <days>         Only postings within N days (approximated from
@@ -149,6 +156,7 @@ async function main(): Promise<number> {
       jobage: flags.jobage ? parseInt(flags.jobage as string, 10) : undefined,
       page: flags.page ? Math.max(1, parseInt(flags.page as string, 10)) : 1,
       limit: flags.limit ? Math.max(1, parseInt(flags.limit as string, 10)) : 25,
+      loose: flags.loose !== undefined,
       format: safeFmt,
       custom,
     }

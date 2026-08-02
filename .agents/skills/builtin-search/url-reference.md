@@ -86,9 +86,17 @@ ampersands — both need HTML-entity decoding before/after `JSON.parse`.
 
 Key JSON-LD fields used: `title`, `description` (HTML string, converted to
 plain text), `hiringOrganization.name` / `.sameAs`, `baseSalary.value.{minValue,
-maxValue,unitText}`, `datePosted`, `employmentType`, `industry` (array),
+maxValue,unitText}`, `datePosted`, `employmentType`, `industry`,
 `jobLocation` (array of `{address: {addressLocality, addressRegion,
 addressCountry}}`).
+
+**`industry` is not always an array.** schema.org types it as Text, and Built In
+emits a bare string (`"industry": "Biotech"`) when a posting has exactly one
+industry, switching to an array only when there are several. Verified live on
+job `9568850` (Agilent). The CLI normalizes it to `string[] | null`, so the
+`industries` field is safe to `.join()` — a raw string passes a `.length` check
+but has no `.join`, which used to crash `detail --format plain` with
+`DETAIL_FAILED` on most biotech listings.
 
 ## Notes
 

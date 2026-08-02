@@ -194,7 +194,9 @@ interface JsonLdJobPosting {
   datePosted?: string
   employmentType?: string
   hiringOrganization?: { name?: string; sameAs?: string }
-  industry?: string[]
+  // schema.org `industry` is a Text field, so builtin.com emits a bare string for a
+  // single-industry posting and an array only when there are several.
+  industry?: string | string[]
   jobLocation?: Array<{
     address?: {
       addressLocality?: string
@@ -222,6 +224,21 @@ function extractJobPostingJsonLd(html: string): JsonLdJobPosting | null {
   } catch {
     return null
   }
+}
+
+/**
+ * Coerce JSON-LD `industry` to the `string[] | null` this module publishes.
+ * A single-industry posting arrives as a bare string, which passes a `.length`
+ * truthiness check but has no `.join` — that mismatch crashed plain-format
+ * `detail` on most biotech listings.
+ */
+function normalizeIndustries(industry: JsonLdJobPosting["industry"]): string[] | null {
+  if (industry == null) return null
+  const list = (Array.isArray(industry) ? industry : [industry])
+    .filter((v): v is string => typeof v === "string")
+    .map((v) => decodeHtmlEntities(v).trim())
+    .filter((v) => v !== "")
+  return list.length ? list : null
 }
 
 function formatSalary(job: JsonLdJobPosting): string | null {
@@ -270,7 +287,7 @@ export function parseJobDetail(html: string, id: string, url: string): JobDetail
     description: job.description ? descriptionToText(job.description) : null,
     employmentType: job.employmentType ?? null,
     datePosted: job.datePosted ?? null,
-    industries: job.industry ?? null,
+    industries: normalizeIndustries(job.industry),
     applyUrl: url,
   }
 }

@@ -30,6 +30,18 @@ Unlike the Greenhouse/Ashby/Lever skills, Workday supports **server-side keyword
 search**: `--query` is sent to each employer as `searchText`, so you get real
 matching rather than local filtering of a full board dump.
 
+**But Workday OR-matches `searchText` across the whole posting**, so on its own a
+multi-word query returns anything sharing a single common word — `-q "technical
+program manager"` came back with "Key Account Manager" and "Field Medical Director".
+The server call supplies recall; this skill then narrows to titles containing **every**
+term, the same "all terms must match" rule the Greenhouse/Ashby/Lever skills use. Pass
+`--loose` to turn the narrowing off.
+
+Because the strict filter runs over the fetched window, a query overfetches a few
+extra pages per employer so a matching title ranked below the noise isn't lost.
+Compare `meta.matchedTotal` (server-side hits) against `meta.fetched` (what survived
+local filtering); `meta.queryFilter` records which mode was used.
+
 Workday is per-tenant, so each employer is recorded as a `(tenant, wd, site)`
 triple in `cli/src/employers.ts`. Nine employers ship verified; any other
 Workday site works via `--tenant/--wd/--site`.
@@ -42,8 +54,9 @@ Workday site works via `--tenant/--wd/--site`.
 bun run .agents/skills/workday-search/cli/src/cli.ts search [flags]
 ```
 
-- `--query <text>` / `-q <text>` — keyword search, sent **server-side**.
-- `--location <text>` / `-l <text>` — filter results on location text, e.g. `"Santa Clara"`.
+- `--query <text>` / `-q <text>` — keyword search, sent **server-side**, then narrowed locally to titles containing **every** term (see below).
+- `--loose` — skip that local narrowing and keep Workday's own OR-matched ranking. Use it when the term you care about lives in the description rather than the title.
+- `--location <text>` / `-l <text>` — filter results on location text, e.g. `"Santa Clara"`. Matched on **token boundaries**.
 - `--employer <key>` / `-e <key>` — specific employer (see `employers`). **Repeatable.**
 - `--sector <name>` — `pharma`, `biotech`, or `tech`.
 - `--jobage <days>` — only postings within N days (approximated from Workday's relative posted text).
@@ -103,6 +116,9 @@ bun run .agents/skills/workday-search/cli/src/cli.ts search -q "bioinformatics" 
 # Computational biology at two employers, last 14 days
 bun run .agents/skills/workday-search/cli/src/cli.ts search -q "computational biology" -e roche -e gilead --jobage 14 --format table
 
+# Same query, but keep everything Workday matched (term may be in the description)
+bun run .agents/skills/workday-search/cli/src/cli.ts search -q "computational biology" --loose --format table
+
 # Full description for one posting
 bun run .agents/skills/workday-search/cli/src/cli.ts detail "https://roche.wd3.myworkdayjobs.com/roche-ext/job/Santa-Clara/Senior-Bioinformatics-Software-Engineer_202607-118174-2" --format plain
 ```
@@ -119,6 +135,8 @@ All errors are written to **stderr** as `{ "error": "...", "code": "..." }` and 
 
 ## Notes
 
+- **`--location` matches whole tokens.** It also excludes postings whose location Workday collapses to `"2 Locations"` / `"4 Locations"` — those carry no city text, so only a `detail` fetch can tell whether they include the place you asked for. Drop `-l` if you want them back.
+- **Two-letter query terms** (`ai`, `ml`, `qa`) match whole tokens; longer terms match as substrings, so `-q "bioinformatic"` still finds "Bioinformatician".
 - **Workday caps page size at 20** per request (a larger `limit` makes it return no postings at all); the CLI pages automatically and exposes your own `--limit` on top.
 - **Dates are approximate.** Workday's search response gives only relative text (`"Posted 2 Days Ago"`), which the CLI converts to an ISO date for sorting and `--jobage`. Postings whose phrasing isn't recognized keep a `null` date and are **not** filtered out by `--jobage`. The `postedOn` field preserves Workday's original wording.
 - `meta.matchedTotal` is the server-side match count across employers; `meta.fetched` is how many were pulled before local filtering.

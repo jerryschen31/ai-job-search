@@ -137,6 +137,22 @@ describe("parseJobDetail", () => {
     expect(job!.description).toContain("Build things & ship them.");
   });
 
+  // Regression: schema.org `industry` is a Text field, so a single-industry posting
+  // arrives as a bare string. A string passes `.length` but has no `.join`, which
+  // made `detail --format plain` exit 1 with DETAIL_FAILED on most biotech listings.
+  test("coerces a single-industry string to an array", () => {
+    const html = detailHtml({ title: "DevOps Engineer", industry: "Biotech" });
+    const job = parseJobDetail(html, "9568850", "https://builtin.com/job/x/9568850");
+    expect(job!.industries).toEqual(["Biotech"]);
+  });
+
+  test("industries is null when absent or empty, never a bare string", () => {
+    const absent = parseJobDetail(detailHtml({ title: "A" }), "1", "https://builtin.com/job/x/1");
+    expect(absent!.industries).toBeNull();
+    const blank = parseJobDetail(detailHtml({ title: "B", industry: "   " }), "2", "https://builtin.com/job/x/2");
+    expect(blank!.industries).toBeNull();
+  });
+
   test("joins multiple jobLocation entries", () => {
     const html = detailHtml({
       title: "Remote Engineer",
