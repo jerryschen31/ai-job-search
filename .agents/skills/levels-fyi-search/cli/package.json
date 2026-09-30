@@ -1,0 +1,11 @@
+{
+  "name": "levels-fyi-cli",
+  "version": "1.0.0",
+  "description": "CLI for searching jobs on Levels.fyi by job family, with verified salary ranges attached — no authentication, zero runtime dependencies.",
+  "type": "module",
+  "main": "src/cli.ts",
+  "bin": { "levels-fyi-search": "src/cli.ts" },
+  "scripts": { "start": "bun run src/cli.ts", "test": "bun test --timeout 30000", "typecheck": "tsc --noEmit" },
+  "dependencies": {},
+  "devDependencies": { "typescript": "^5.4.0", "@types/bun": "1.3.14" }
+}

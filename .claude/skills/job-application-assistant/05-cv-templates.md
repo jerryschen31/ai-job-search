@@ -115,12 +115,11 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For Principal Engineer / Systems Lead / AI Engineering roles:**
+> Ph.D. engineering leader with 20 years building and deploying enterprise digital infrastructure across the drug development lifecycle, from high-throughput R&D data platforms to GxP-qualified clinical manufacturing systems. At Genentech/Roche, I lead GxP-qualified cloud application development, global software validation and rollout, and department-wide AI adoption, training ~100 employees and building agentic AI tools with Claude Code. I bring hands-on AWS cloud architecture experience (Batch, RDS, ECR, Terraform) and a track record of founding and scaling technical infrastructure from zero, including as founder of a Y Combinator-interviewed bioinformatics startup. I'm looking to bring this systems-and-AI leadership to a Principal Engineer / Systems Lead role driving the rollout, automation, and governance of complex digital and agentic AI solutions.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For Bioinformatics / Computational Biology Leadership roles:**
+> Ph.D. computational biologist and engineering leader with 20 years building end-to-end bioinformatics and cloud genomics infrastructure for biotech and pharma organizations, from Series Seed startups to Genentech/Roche. As the founding bioinformatics hire at Encoded Therapeutics, I built the company's entire data and cloud infrastructure from scratch, directly supporting the discovery of its lead drug candidate and $300M+ in funding across Seed through Series D. I combine deep genomics domain expertise (NGS, single-cell sequencing, structural variant calling) with AWS cloud architecture and software validation experience, and I'm now applying that same systems leadership to agentic AI adoption in GxP-regulated environments.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 
